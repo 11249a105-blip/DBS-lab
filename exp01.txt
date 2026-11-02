@@ -58,15 +58,14 @@ CREATE TABLE Customer_Loan (
 
 -- ── 2. DATA INSERTION ──────────────────────────────────
 
-INSERT INTO Branch VALUES (1, 'Main Branch', 'Chennai', 'Anna Salai');
-INSERT INTO Customer VALUES (1, 'Priya', 'Chennai', '9876543210', 'priya@mail.com');
-INSERT INTO Account VALUES (101, 'Savings', 5000.00, TO_DATE('2026-01-10', 'YYYY-MM-DD'), 1, 1);
-INSERT INTO Transactions VALUES (1001, TO_DATE('2026-01-11', 'YYYY-MM-DD'), 'Deposit', 1000.00, 101);
-INSERT INTO Loan VALUES (501, 'Education', 50000.00, 8.50, 1);
-INSERT INTO Customer_Loan VALUES (1, 501, TO_DATE('2026-01-12', 'YYYY-MM-DD'));
+INSERT INTO Branch VALUES (2, 'City Branch', 'Hyderabad', 'MG Road');
+INSERT INTO Customer VALUES (2, 'Arjun', 'Hyderabad', '9876501234', 'arjun@mail.com');
+INSERT INTO Account VALUES (102, 'Current', 8500.00, TO_DATE('2026-02-15', 'YYYY-MM-DD'), 2, 2);
+INSERT INTO Transactions VALUES (1002, TO_DATE('2026-02-16', 'YYYY-MM-DD'), 'Withdrawal', 1500.00, 102);
+INSERT INTO Loan VALUES (502, 'Home', 200000.00, 7.50, 2);
+INSERT INTO Customer_Loan VALUES (2, 502, TO_DATE('2026-02-17', 'YYYY-MM-DD'));
 
 COMMIT;
-
 
 -- ── 3. DATA VERIFICATION & QUERIES ─────────────────────
 
@@ -86,39 +85,42 @@ SELECT * FROM Transactions;
 SELECT * FROM Loan;
 SELECT * FROM Customer_Loan;
 
-
 Branch Table:
 
  BRANCH_ID BRANCH_NAME     CITY       ADDRESS
 ---------- --------------- ---------- ---------------
-         1 Main Branch     Chennai    Anna Salai
+         2 City Branch     Hyderabad  MG Road
 
 Customer Table
 
+
 CUSTOMER_ID NAME       ADDRESS         PHONE           EMAIL
 ----------- ---------- --------------- --------------- ---------------
-          1 Priya      Chennai         9876543210      priya@mail.com
+          2 Arjun      Hyderabad       9876501234      arjun@mail.com
+
 
 Account Table
 
 ACCOUNT_NO ACCOUNT_TY    BALANCE OPEN_DATE CUSTOMER_ID  BRANCH_ID
 ---------- ---------- ---------- --------- ----------- ----------
-       101 Savings          5000 10-JAN-26           1          1
+       102 Current          8500 15-FEB-26           2          2
+
 
 Transactions Table
 
     TXN_ID TXN_DATE  TXN_TYPE            AMOUNT ACCOUNT_NO
 ---------- --------- --------------- ---------- ----------
-      1001 11-JAN-26 Deposit               1000        101
+      1002 16-FEB-26 Withdrawal           1500        102
+
 
 Loan Table
 
    LOAN_ID LOAN_TYPE                      LOAN_AMOUNT INTEREST_RATE  BRANCH_ID
 ---------- ------------------------------ ----------- ------------- ----------
-       501 Education                            50000           8.5          1
+       502 Home                               200000           7.5          2
 
 Customer_Loan Table
 
 CUSTOMER_ID    LOAN_ID APPLY_DAT
 ----------- ---------- ---------
-          1        501 12-JAN-26
+          2        502 17-FEB-26
