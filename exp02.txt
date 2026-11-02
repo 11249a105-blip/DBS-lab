@@ -1,4 +1,4 @@
--- ── 1. TABLE CREATION ──────────────────────────────────
+1. TABLE CREATION :
 
 CREATE TABLE Department (
     dept_id INT PRIMARY KEY,
@@ -54,18 +54,17 @@ CREATE TABLE Teaches (
 
 -- ── 2. DATA INSERTION ──────────────────────────────────
 
--- Oracle requires separate INSERT statements for each row
-INSERT INTO Department VALUES (1, 'CSE', 'Block A');
-INSERT INTO Department VALUES (2, 'ECE', 'Block B');
 
-INSERT INTO Student VALUES (101, 'Priya', TO_DATE('2005-05-10', 'YYYY-MM-DD'), '9876543210', 1, 9.20);
-INSERT INTO Faculty VALUES (201, 'Dr Sharma', 'Professor', 1);
-INSERT INTO Course VALUES ('CS301', 'Database Systems', 4, 1);
-INSERT INTO Enrollment VALUES (101, 'CS301', 'S5', 'A');
-INSERT INTO Teaches VALUES (201, 'CS301', 'S5');
+   INSERT INTO Department VALUES (3, 'IT', 'Block C');
+INSERT INTO Department VALUES (4, 'MECH', 'Block D');
+
+INSERT INTO Student VALUES (102, 'Arjun', TO_DATE('2004-08-15', 'YYYY-MM-DD'), '9876501234', 3, 8.50);
+INSERT INTO Faculty VALUES (202, 'Dr Kumar', 'Associate Prof', 3);
+INSERT INTO Course VALUES ('IT302', 'Java Programming', 3, 3);
+INSERT INTO Enrollment VALUES (102, 'IT302', 'S6', 'B');
+INSERT INTO Teaches VALUES (202, 'IT302', 'S6');
 
 COMMIT;
-
 
 -- ── 3. DATA VERIFICATION & QUERIES ─────────────────────
 
@@ -85,44 +84,42 @@ SELECT * FROM Course;
 SELECT * FROM Enrollment;
 SELECT * FROM Teaches;
 
-
-----------------------
-OUTPUT
-----------------------
+OUTPUT:
 
 Department Table
 
-   DEPT_ID DEPT_NAME       LOCATION       
+   DEPT_ID DEPT_NAME       LOCATION
 ---------- --------------- ---------------
-         1 CSE             Block A        
-         2 ECE             Block B        
+         3 IT              Block C
+         4 MECH            Block D
 
 Student Table
 
 STUDENT_ID NAME            DOB       PHONE             DEPT_ID       CGPA
 ---------- --------------- --------- --------------- ---------- ----------
-       101 Priya           10-MAY-05 9876543210               1        9.2
+       102 Arjun           15-AUG-04 9876501234               3        8.5
+
 
 Faculty Table
 
 FACULTY_ID NAME            DESIGNATION        DEPT_ID
 ---------- --------------- --------------- ----------
-       201 Dr Sharma       Professor                1
+       202 Dr Kumar        Associate Prof            3
 
 Course Table
 
 COURSE_ID  TITLE                   CREDITS    DEPT_ID
 ---------- -------------------- ---------- ----------
-CS301      Database Systems              4          1
+IT302      Java Programming              3          3
 
 Enrollment Table
 
 STUDENT_ID COURSE_ID  SEMESTER   GR
 ---------- ---------- ---------- --
-       101 CS301      S5         A 
+       102 IT302      S6         B
 
 Teaches Table
 
-FACULTY_ID COURSE_ID  SEMESTER  
+FACULTY_ID COURSE_ID  SEMESTER
 ---------- ---------- ----------
-       201 CS301      S5        
+       202 IT302      S6
